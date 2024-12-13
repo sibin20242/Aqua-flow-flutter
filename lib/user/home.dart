@@ -1,3 +1,10 @@
+import 'package:aquaflow/user/appl.dart';
+import 'package:aquaflow/user/bill.dart';
+import 'package:aquaflow/user/chatStaff.dart';
+import 'package:aquaflow/user/comfeed.dart';
+import 'package:aquaflow/user/language.dart';
+import 'package:aquaflow/user/profile.dart';
+import 'package:aquaflow/user/time.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen1 extends StatelessWidget {
@@ -9,9 +16,9 @@ class HomeScreen1 extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'AQUA FLOW',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: const Color(0xFF002366),
+        backgroundColor: const Color.fromARGB(255, 2, 1, 48),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
@@ -24,106 +31,120 @@ class HomeScreen1 extends StatelessWidget {
           builder: (context) => IconButton(
             icon: const Icon(Icons.menu),
             onPressed: () {
-              // Open the drawer when menu button is clicked
-              Scaffold.of(context).openDrawer();
+              Scaffold.of(context).openDrawer(); // Open drawer action
             },
           ),
         ),
       ),
       drawer: Drawer(
-        backgroundColor: const Color(0xFF002366),
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            // Drawer Header
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: const Color(0xFF002366),
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.white,
-                      child: Icon(
-                        Icons.person,
-                        color: Colors.blue,
-                        size: 40,
-                      ),
-                    ),
-                    SizedBox(height: 26),
-                    Text(
-                      'Welcome, Ismail',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    Text(
-                      'Your Account',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
+        child: Container(
+          color: const Color.fromARGB(255, 15, 1, 48),
+          child: ListView(
+            children: [
+              UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.indigo.shade900,
+                ),
+                accountName: const Text(
+                  'WELCOME',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                accountEmail: const Text(
+                  'PRANAV',
+                  style: TextStyle(color: Colors.white),
+                ),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.blue.shade100,
+                  child: Icon(
+                    Icons.person,
+                    size: 40,
+                    color: Colors.blue.shade900,
+                  ),
                 ),
               ),
-            ),
-            // Drawer Menu Items
-            ListTile(
-              leading: const Icon(Icons.home, color: Colors.white),
-              title: const Text(
-                'Home',
-                style: TextStyle(color: Colors.white),
+              // Drawer Items with Links
+              ListTile(
+                leading: const Icon(Icons.person, color: Colors.white),
+                title: const Text(
+                  'PROFILE',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Profile(),
+                                ),
+                              );
+                
+                },
               ),
-              onTap: () {
-                // Handle Home navigation
-                Navigator.pop(context); // Close the drawer
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings, color: Colors.white),
-              title: const Text(
-                'Settings',
-                style: TextStyle(color: Colors.white),
+              ListTile(
+                leading: const Icon(Icons.language, color: Colors.white),
+                title: const Text(
+                  'LANGUAGE',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LanguageSelectionScreen(),
+                                ),
+                              );
+                },
               ),
-              onTap: () {
-                // Handle Settings navigation
-                Navigator.pop(context); // Close the drawer
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.help, color: Colors.white),
-              title: const Text(
-                'Help',
-                style: TextStyle(color: Colors.white),
+              ListTile(
+                leading: const Icon(Icons.light_mode, color: Colors.white),
+                title: const Text(
+                  'MODE',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  // Add functionality for light/dark mode toggle
+                },
               ),
-              onTap: () {
-                // Handle Help navigation
-                Navigator.pop(context); // Close the drawer
-              },
-            ),
-            const Divider(
-              color: Colors.white,
-            ),
-            ListTile(
-              leading: const Icon(Icons.exit_to_app, color: Colors.white),
-              title: const Text(
-                'Logout',
-                style: TextStyle(color: Colors.white),
+              ListTile(
+                leading: const Icon(Icons.info_outline, color: Colors.white),
+                title: const Text(
+                  'ABOUT',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  // Navigate to About page or display information
+                },
               ),
-              onTap: () {
-                // Handle Logout action
-                Navigator.pop(context); // Close the drawer
-              },
-            ),
-          ],
+              ListTile(
+                leading: const Icon(Icons.share, color: Colors.white),
+                title: const Text(
+                  'SHARE',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  // Add share functionality
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.logout, color: Colors.red),
+                title: const Text(
+                  'LOG OUT',
+                  style: TextStyle(color: Colors.red),
+                ),
+                onTap: () {
+                  // Log out functionality
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // Welcome Header
             Container(
               padding: const EdgeInsets.all(16.0),
               decoration: const BoxDecoration(
@@ -169,6 +190,7 @@ class HomeScreen1 extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
+            // Feature Grid
             GridView(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -184,33 +206,46 @@ class HomeScreen1 extends StatelessWidget {
                   icon: Icons.assignment,
                   title: 'Application & Status',
                   onTap: () {
-                    // Action for Application & Status
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Application()),
+                    );
                   },
                 ),
                 FeatureCard(
                   icon: Icons.access_time,
                   title: 'Time Schedule',
                   onTap: () {
-                    // Action for Time Schedule
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SchedulePage()),
+                    );
                   },
                 ),
                 FeatureCard(
                   icon: Icons.feedback,
                   title: 'Complaints & Feedback',
                   onTap: () {
-                    // Action for Complaints & Feedback
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ComplaintFeedbackScreen()),
+                    );
                   },
                 ),
                 FeatureCard(
                   icon: Icons.receipt,
                   title: 'Bill & Payment',
                   onTap: () {
-                    // Action for Bill & Payment
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => BillPaymentScreen()),
+                    );
                   },
                 ),
               ],
             ),
             const SizedBox(height: 20),
+            // Chat with Staff Button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: ElevatedButton(
@@ -222,7 +257,10 @@ class HomeScreen1 extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                 ),
                 onPressed: () {
-                  // Action for Chat with Staff
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ChatScreen3()),
+                  );
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

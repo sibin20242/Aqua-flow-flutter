@@ -1,5 +1,5 @@
 
-import 'package:aquaflow/signup.dart';
+import 'package:aquaflow/user/signup.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {

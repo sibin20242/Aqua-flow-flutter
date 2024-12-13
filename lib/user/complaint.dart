@@ -26,10 +26,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
           'AQUA FLOW',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {},
-        ),
+        
         actions: [
           IconButton(
             icon: Icon(Icons.notifications),
@@ -41,6 +38,13 @@ class _ComplaintPageState extends State<ComplaintPage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+
+
+         
+
+
+
+
           children: [
             Text(
               'Complaints',

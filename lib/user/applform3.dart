@@ -1,3 +1,4 @@
+import 'package:aquaflow/user/applform4.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -94,7 +95,12 @@ class _UploadDocumentsScreenState extends State<UploadDocumentsScreen> {
                         child: Text("BACK"),
                       ),
                       ElevatedButton(
-                        onPressed: () {
+                        onPressed: () {Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => applicationforms(),
+                                ),
+                              );
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("Proceeding to Next Step!")),
                           );

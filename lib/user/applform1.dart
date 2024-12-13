@@ -1,8 +1,9 @@
+import 'package:aquaflow/user/applform2.dart';
 import 'package:flutter/material.dart';
 
 
 
-class ApplicationFormStep2 extends StatelessWidget {
+class ApplicationFormScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +30,7 @@ class ApplicationFormStep2 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 StepIndicator(isActive: true),
-                StepIndicator(isActive: true),
+                StepIndicator(),
                 StepIndicator(),
                 StepIndicator(),
               ],
@@ -37,35 +38,36 @@ class ApplicationFormStep2 extends StatelessWidget {
             SizedBox(height: 20),
             TextFormField(
               decoration: InputDecoration(
-                labelText: 'NUMBER OF FAMILY MEMBERS',
+                labelText: 'NAME OF GRAM PANCHAYAT',
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 15),
             TextFormField(
               decoration: InputDecoration(
-                labelText: 'AADHAAR NO',
+                labelText: "APPLICANT'S NAME",
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 15),
             TextFormField(
               decoration: InputDecoration(
-                labelText: 'RATION CARD (BPL/APL)',
+                labelText: "FATHER'S/MOTHER'S NAME",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 15),
+            TextFormField(
+              maxLines: 3,
+              decoration: InputDecoration(
+                labelText: 'ADDRESS',
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 15),
             TextFormField(
               decoration: InputDecoration(
-                labelText: 'NEIGHBOUR CONSUMPTION NO',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 15),
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: 'BELONGING TO SCHEDULED CASTES/SCHEDULED TRIBES?',
+                labelText: 'PHONE NO',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -84,7 +86,14 @@ class ApplicationFormStep2 extends StatelessWidget {
                   child: Text('BACK'),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ApplicationFormStep2(),
+                                ),
+                              );
+
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
@@ -120,3 +129,4 @@ class StepIndicator extends StatelessWidget {
     );
   }
 }
+

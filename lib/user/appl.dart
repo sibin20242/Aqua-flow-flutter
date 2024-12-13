@@ -1,3 +1,5 @@
+import 'package:aquaflow/user/applform1.dart';
+import 'package:aquaflow/user/viewstatus.dart';
 import 'package:flutter/material.dart';
 
 class Application extends StatelessWidget {
@@ -63,7 +65,12 @@ class Application extends StatelessWidget {
                         context,
                         icon: Icons.article_outlined,
                         text: 'Fill Your Application Form',
-                        onTap: () {
+                        onTap: () {Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ApplicationFormScreen(),
+                                ),
+                              );
                           // Navigate to Application form
                         },
                       ),
@@ -73,7 +80,12 @@ class Application extends StatelessWidget {
                         context,
                         icon: Icons.remove_red_eye_outlined,
                         text: 'View Your Application & Status',
-                        onTap: () {
+                        onTap: () {Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ApplicationStatusScreen(),
+                                ),
+                              );
                           // Navigate to View Status
                         },
                       ),

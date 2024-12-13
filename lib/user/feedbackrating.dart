@@ -19,12 +19,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
       appBar: AppBar(
         title: const Text('AQUA FLOW'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: () {
-              // Handle notification tap
-            },
-          ),
+        
         ],
       ),
       body: Padding(

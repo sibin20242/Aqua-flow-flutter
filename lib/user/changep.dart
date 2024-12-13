@@ -1,3 +1,4 @@
+import 'package:aquaflow/user/forgetp.dart';
 import 'package:flutter/material.dart';
 
 
@@ -67,7 +68,12 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       children: [
                         TextButton(
                           onPressed: () {
-                            // Handle forgot password action
+                           Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ForgetPasswordPage(),
+                                ),
+                              );
                           },
                           child: const Text(
                             'FORGET PASSWORD?',
@@ -80,7 +86,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                           ),
                           onPressed: () {
                             // Handle save action
-                            final currentPassword = _currentPasswordController.text;
                             final newPassword = _newPasswordController.text;
                             final confirmPassword = _confirmPasswordController.text;
 

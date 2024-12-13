@@ -1,20 +1,9 @@
+import 'package:aquaflow/user/applform3.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(applicationform ());
-}
 
-class applicationform extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ApplicationFormScreen(),
-    );
-  }
-}
 
-class ApplicationFormScreen extends StatelessWidget {
+class ApplicationFormStep2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +30,7 @@ class ApplicationFormScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 StepIndicator(isActive: true),
-                StepIndicator(),
+                StepIndicator(isActive: true),
                 StepIndicator(),
                 StepIndicator(),
               ],
@@ -49,36 +38,35 @@ class ApplicationFormScreen extends StatelessWidget {
             SizedBox(height: 20),
             TextFormField(
               decoration: InputDecoration(
-                labelText: 'NAME OF GRAM PANCHAYAT',
+                labelText: 'NUMBER OF FAMILY MEMBERS',
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 15),
             TextFormField(
               decoration: InputDecoration(
-                labelText: "APPLICANT'S NAME",
+                labelText: 'AADHAAR NO',
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 15),
             TextFormField(
               decoration: InputDecoration(
-                labelText: "FATHER'S/MOTHER'S NAME",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 15),
-            TextFormField(
-              maxLines: 3,
-              decoration: InputDecoration(
-                labelText: 'ADDRESS',
+                labelText: 'RATION CARD (BPL/APL)',
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 15),
             TextFormField(
               decoration: InputDecoration(
-                labelText: 'PHONE NO',
+                labelText: 'NEIGHBOUR CONSUMPTION NO',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 15),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'BELONGING TO SCHEDULED CASTES/SCHEDULED TRIBES?',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -97,7 +85,14 @@ class ApplicationFormScreen extends StatelessWidget {
                   child: Text('BACK'),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => UploadDocumentsScreen(),
+                                ),
+                              );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
@@ -133,4 +128,3 @@ class StepIndicator extends StatelessWidget {
     );
   }
 }
-
