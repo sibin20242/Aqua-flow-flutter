@@ -1,4 +1,6 @@
-import 'package:aquaflow/user/home.dart';
+import 'package:aquaflow/presentation/staff/home.dart';
+import 'package:aquaflow/presentation/user/home.dart';
+import 'package:aquaflow/presentation/user/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false,
      
-      home: HomeScreen1(),
+      home: Login(),
     );
   }
 }

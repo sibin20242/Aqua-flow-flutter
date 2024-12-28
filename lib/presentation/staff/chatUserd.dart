@@ -1,4 +1,4 @@
-import 'package:aquaflow/staff/chatUser.dart';
+import 'package:aquaflow/presentation/staff/chatUser.dart';
 import 'package:flutter/material.dart';
 
 class UserListScreen extends StatelessWidget {

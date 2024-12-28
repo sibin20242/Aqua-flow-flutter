@@ -1,5 +1,5 @@
-import 'package:aquaflow/staff/chatAuth.dart';
-import 'package:aquaflow/staff/chatUserd.dart';
+import 'package:aquaflow/presentation/staff/chatAuth.dart';
+import 'package:aquaflow/presentation/staff/chatUserd.dart';
 import 'package:flutter/material.dart';
 
 

@@ -1,8 +1,8 @@
-import 'package:aquaflow/staff/assignedwork.dart';
-import 'package:aquaflow/staff/chatselect.dart';
-import 'package:aquaflow/staff/updatereading.dart';
-import 'package:aquaflow/staff/updatereport.dart';
-import 'package:aquaflow/staff/userdetails.dart';
+import 'package:aquaflow/presentation/staff/assignedwork.dart';
+import 'package:aquaflow/presentation/staff/chatselect.dart';
+import 'package:aquaflow/presentation/staff/updatereading.dart';
+import 'package:aquaflow/presentation/staff/updatereport.dart';
+import 'package:aquaflow/presentation/staff/userdetails.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen2 extends StatelessWidget {

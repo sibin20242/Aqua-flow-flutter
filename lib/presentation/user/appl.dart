@@ -1,5 +1,5 @@
-import 'package:aquaflow/user/applform1.dart';
-import 'package:aquaflow/user/viewstatus.dart';
+import 'package:aquaflow/presentation/user/applform1.dart';
+import 'package:aquaflow/presentation/user/viewstatus.dart';
 import 'package:flutter/material.dart';
 
 class Application extends StatelessWidget {

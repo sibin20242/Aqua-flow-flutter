@@ -1,4 +1,4 @@
-import 'package:aquaflow/user/editprofile.dart';
+import 'package:aquaflow/presentation/user/editprofile.dart';
 import 'package:flutter/material.dart';
 
 

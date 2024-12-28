@@ -1,10 +1,10 @@
-import 'package:aquaflow/user/appl.dart';
-import 'package:aquaflow/user/bill.dart';
-import 'package:aquaflow/user/chatStaff.dart';
-import 'package:aquaflow/user/comfeed.dart';
-import 'package:aquaflow/user/language.dart';
-import 'package:aquaflow/user/profile.dart';
-import 'package:aquaflow/user/time.dart';
+import 'package:aquaflow/presentation/user/appl.dart';
+import 'package:aquaflow/presentation/user/bill.dart';
+import 'package:aquaflow/presentation/user/chatStaff.dart';
+import 'package:aquaflow/presentation/user/comfeed.dart';
+import 'package:aquaflow/presentation/user/language.dart';
+import 'package:aquaflow/presentation/user/profile.dart';
+import 'package:aquaflow/presentation/user/time.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen1 extends StatelessWidget {

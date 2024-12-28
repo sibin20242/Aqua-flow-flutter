@@ -1,9 +1,13 @@
 
-import 'package:aquaflow/user/signup.dart';
+import 'package:aquaflow/presentation/user/signup.dart';
+import 'package:aquaflow/services/loginapi.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +69,7 @@ class Login extends StatelessWidget {
                           ),
                           SizedBox(height: 30),
                           TextFormField(
+                            controller: _emailController,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.person, color: Color.fromARGB(227, 13, 51, 117),),
                               labelText: 'Enter your name',
@@ -89,6 +94,7 @@ class Login extends StatelessWidget {
                           ),
                           SizedBox(height: 20),
                           TextFormField(
+                            controller: _passwordController,
                             obscureText: true,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.lock, color: Color.fromARGB(227, 13, 51, 117),),
@@ -116,9 +122,10 @@ class Login extends StatelessWidget {
                           ElevatedButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('Logging in...')),
-                                );
+                                // ScaffoldMessenger.of(context).showSnackBar(
+                                //   SnackBar(content: Text('Logging in...')),
+                                // );
+                                loginfun(_emailController.text, _passwordController.text);
                               }
                             },
                             style: ElevatedButton.styleFrom(
@@ -143,6 +150,7 @@ class Login extends StatelessWidget {
                           SizedBox(height: 20),
                           TextButton(
                             onPressed: () {
+                              
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

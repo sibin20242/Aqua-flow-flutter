@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:aquaflow/user/complaint.dart';
-import 'package:aquaflow/user/feedbackrating.dart';
+import 'package:aquaflow/presentation/user/complaint.dart';
+import 'package:aquaflow/presentation/user/feedbackrating.dart';
 
 class ComplaintFeedbackScreen extends StatelessWidget {
   @override
