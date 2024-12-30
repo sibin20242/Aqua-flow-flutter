@@ -74,7 +74,7 @@ class Login extends StatelessWidget {
                               prefixIcon: Icon(Icons.person, color: Color.fromARGB(227, 13, 51, 117),),
                               labelText: 'Enter your name',
                               labelStyle: TextStyle(color: Color.fromARGB(227, 13, 51, 117),),
-                              hintText: 'John Doe',
+                              
                               filled: true,
                               fillColor: Colors.grey[200],
                               border: OutlineInputBorder(
@@ -92,7 +92,7 @@ class Login extends StatelessWidget {
                               return null;
                             },
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 10),
                           TextFormField(
                             controller: _passwordController,
                             obscureText: true,
@@ -100,7 +100,7 @@ class Login extends StatelessWidget {
                               prefixIcon: Icon(Icons.lock, color: Color.fromARGB(227, 13, 51, 117),),
                               labelText: 'Enter your password',
                               labelStyle: TextStyle(color: Color.fromARGB(227, 13, 51, 117),),
-                              hintText: '••••••',
+                              
                               filled: true,
                               fillColor: Colors.grey[200],
                               border: OutlineInputBorder(
@@ -118,14 +118,14 @@ class Login extends StatelessWidget {
                               return null;
                             },
                           ),
-                          SizedBox(height: 30),
+                          SizedBox(height: 10),
                           ElevatedButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 // ScaffoldMessenger.of(context).showSnackBar(
                                 //   SnackBar(content: Text('Logging in...')),
                                 // );
-                                loginfun(_emailController.text, _passwordController.text);
+                                loginfun(_emailController.text, _passwordController.text,context);
                               }
                             },
                             style: ElevatedButton.styleFrom(
@@ -147,7 +147,7 @@ class Login extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 10),
                           TextButton(
                             onPressed: () {
                               

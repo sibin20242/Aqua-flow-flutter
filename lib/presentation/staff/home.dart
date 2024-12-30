@@ -9,14 +9,14 @@ class HomeScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('PWMS', style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.black,
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
-          SizedBox(width: 8),
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: Text('PWMS', style: TextStyle(fontWeight: FontWeight.bold)),
+      //   backgroundColor: Colors.black,
+      //   actions: [
+      //     IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
+      //     SizedBox(width: 8),
+      //   ],
+      // ),
       drawer: Drawer(),
       body: Column(
         children: [

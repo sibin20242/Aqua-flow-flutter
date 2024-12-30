@@ -1,7 +1,13 @@
+import 'package:aquaflow/services/user/signupapi.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationForm extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    TextEditingController _emailController = TextEditingController();
+      TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  
+
 
   @override
   Widget build(BuildContext context) {
@@ -63,11 +69,12 @@ class RegistrationForm extends StatelessWidget {
                           ),
                           SizedBox(height: 30),
                           TextFormField(
+                            controller: _emailController,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.email, color: Color.fromARGB(227, 13, 51, 117)),
                               labelText: 'Email or Mobile',
                               labelStyle: TextStyle(color: Color.fromARGB(227, 13, 51, 117)),
-                              hintText: 'example@domain.com',
+                              
                               filled: true,
                               fillColor: Colors.grey[200],
                               border: OutlineInputBorder(
@@ -87,11 +94,12 @@ class RegistrationForm extends StatelessWidget {
                           ),
                           SizedBox(height: 20),
                           TextFormField(
+                            controller: _usernameController,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.person, color: Color.fromARGB(227, 13, 51, 117)),
                               labelText: 'Full Name',
                               labelStyle: TextStyle(color: Color.fromARGB(227, 13, 51, 117)),
-                              hintText: 'John Doe',
+                            
                               filled: true,
                               fillColor: Colors.grey[200],
                               border: OutlineInputBorder(
@@ -104,19 +112,20 @@ class RegistrationForm extends StatelessWidget {
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Please enter your full name';
+                                return 'Please enter your username';
                               }
                               return null;
                             },
                           ),
                           SizedBox(height: 20),
                           TextFormField(
+                            controller: _passwordController,
                             obscureText: true,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.lock, color: Color.fromARGB(227, 13, 51, 117)),
                               labelText: 'Password',
                               labelStyle: TextStyle(color: Color.fromARGB(227, 13, 51, 117)),
-                              hintText: '••••••••',
+                              
                               filled: true,
                               fillColor: Colors.grey[200],
                               border: OutlineInputBorder(
@@ -141,7 +150,7 @@ class RegistrationForm extends StatelessWidget {
                               prefixIcon: Icon(Icons.lock_outline, color: Color.fromARGB(227, 13, 51, 117)),
                               labelText: 'Confirm Password',
                               labelStyle: TextStyle(color: Color.fromARGB(227, 13, 51, 117)),
-                              hintText: '••••••••',
+                              
                               filled: true,
                               fillColor: Colors.grey[200],
                               border: OutlineInputBorder(
@@ -163,9 +172,11 @@ class RegistrationForm extends StatelessWidget {
                           ElevatedButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('Registration successful')),
-                                );
+                                // ScaffoldMessenger.of(context).showSnackBar(
+                                //   SnackBar(content: Text('Registration successful')),
+                                // );
+
+                                signupfun(_emailController.text, _usernameController.text, _passwordController.text);
                               }
                             },
                             style: ElevatedButton.styleFrom(
