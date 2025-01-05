@@ -1,9 +1,43 @@
 import 'package:aquaflow/presentation/user/changep.dart';
+import 'package:aquaflow/services/user/profileapi.dart';
+import 'package:aquaflow/services/user/viewprofileapi.dart';
 import 'package:flutter/material.dart';
 
 
 
-class Editprofile extends StatelessWidget {
+class Editprofile extends StatefulWidget {
+  @override
+  State<Editprofile> createState() => _EditprofileState();
+}
+
+class _EditprofileState extends State<Editprofile> {
+  TextEditingController fnameController=TextEditingController();
+
+  TextEditingController snameController=TextEditingController();
+
+  TextEditingController lnameController=TextEditingController();
+
+  TextEditingController emailController=TextEditingController();
+
+  TextEditingController phoneController=TextEditingController();
+
+  TextEditingController pincodeController=TextEditingController();
+
+  TextEditingController AddressController=TextEditingController();
+
+  @override
+  void initState() {
+    fnameController.text=PROFILEDATA!['First_name'];
+    snameController.text=PROFILEDATA!['Mid_name']; 
+    lnameController.text=PROFILEDATA!['Last_name'];  
+    emailController.text=PROFILEDATA!['Mail'];  
+    phoneController.text=PROFILEDATA!['Phone_no'].toString();
+    pincodeController.text=PROFILEDATA!['Pincode'].toString();
+    AddressController.text=PROFILEDATA!['Address'];
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,15 +75,15 @@ class Editprofile extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            buildTextField('First Name'),
-            buildTextField('Middle Name'),
-            buildTextField('Last Name'),
-            buildTextField('Phone No'),
-            buildTextField('E-mail'),
-            buildTextField('Pin Code'),
-            buildTextField('Address', maxLines: 3),
-            buildTextField('Panchayath Name'),
-            buildTextField('Staff ID'),
+            extField(fnameController,'First Name'),
+            extField(snameController,'Middle Name'),
+            extField(lnameController,'Last Name'),
+            extField(phoneController,'Phone No'),
+            extField(emailController,'E-mail'), 
+            extField(pincodeController,'Pin Code'),
+            extField(AddressController,'Address', maxLines: 3),
+  
+       
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,8 +103,16 @@ class Editprofile extends StatelessWidget {
                   child: Text('Change Password'),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    
+                  onPressed: ()async {
+
+                    await createOrUpdateProfile(firstName:fnameController.text,
+                     midName:snameController.text,
+            lastName:lnameController.text,
+           phoneNo: phoneController.text,
+            mail: emailController.text,
+          pincode:pincodeController.text,
+            address:AddressController.text,context: context
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF0073E6),
@@ -85,10 +127,11 @@ class Editprofile extends StatelessWidget {
     );
   }
 
-  Widget buildTextField(String label, {int maxLines = 1}) {
+  Widget extField(TextEditingController controller,String label, {int maxLines = 1}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
+        controller: controller,
         maxLines: maxLines,
         decoration: InputDecoration(
           labelText: label,

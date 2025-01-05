@@ -1,7 +1,6 @@
 import 'package:aquaflow/presentation/user/editprofile.dart';
+import 'package:aquaflow/services/user/viewprofileapi.dart';
 import 'package:flutter/material.dart';
-
-
 
 class Profile extends StatelessWidget {
   @override
@@ -46,41 +45,43 @@ class Profile extends StatelessWidget {
                   ),
                 ],
               ),
+
               SizedBox(height: 20),
               Text(
-                'PRANAV',
+                '${PROFILEDATA?['First_name'] ?? ''} ${PROFILEDATA?['Mid_name'] ?? ''} ${PROFILEDATA?['Last_name'] ?? ''}',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+
               SizedBox(height: 8),
               Text(
-                '2322777345',
+                PROFILEDATA!['Phone_no'].toString(),
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.black54,
                 ),
               ),
               SizedBox(height: 4),
-              Text(
-                'STAFF ID',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black54,
-                ),
-              ),
+              // Text(
+              //   PROFILEDATA!['Phone_no'],
+              //   style: TextStyle(
+              //     fontSize: 16,
+              //     color: Colors.black54,
+              //   ),
+              // ),
               SizedBox(height: 30),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Editprofile(),
-                                ),
-                              );
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Editprofile(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,

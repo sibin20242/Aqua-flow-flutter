@@ -1,19 +1,20 @@
+import 'package:aquaflow/services/loginapi.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 Dio _dio = Dio();
 
-String baseUrl = "http://your-api-url.com/api"; // Replace with your base URL
+
 
 Future<bool> submitApplication({
   required String user,
-  required String applicationNo,
-  required String status,
+  // required String applicationNo,
+  // required String status,
   required String panchayathName,
   required String fatherName,
-  required String motherName,
   required String address,
   required String phoneNo,
-  required int familyMembers,
+  required String familyMembers,
   required String adharNo,
   required String rationCard,
   required String neighbourConsumerNo,
@@ -21,15 +22,13 @@ Future<bool> submitApplication({
   required String aadhaarPhotoPath,
   required String rationCardPhotoPath,
   required String ownershipCertificatePhotoPath,
+  context
 }) async {
   try {
     FormData data = FormData.fromMap({
       "USER": user,
-      "Application_no": applicationNo,
-      "Status": status,
       "Panchayath_name": panchayathName,
       "Father_name": fatherName,
-      "Mother_name": motherName,
       "Address": address,
       "Phone_no": phoneNo,
       "Family_members": familyMembers,
@@ -41,11 +40,13 @@ Future<bool> submitApplication({
       "Rationcard_photo": await MultipartFile.fromFile(rationCardPhotoPath, filename: 'rationcard_photo.jpg'),
       "Ownershipcertificate_photo": await MultipartFile.fromFile(ownershipCertificatePhotoPath, filename: 'ownershipcertificate_photo.jpg'),
     });
+    print(data);
 
-    final response = await _dio.post('$baseUrl/application', data: data);
+    final response = await _dio.post('$baseUrl/AppliRegapi/$loginId', data: data);
 
     if (response.statusCode == 201) { // Adjust status code based on your API
       print('Application submitted successfully!');
+      Navigator.pop(context);
       return true;
     } else {
       print('Application submission failed with status: ${response.statusCode}');

@@ -1,19 +1,19 @@
+import 'package:aquaflow/services/loginapi.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 Dio _dio = Dio();
-
-String baseUrl = "http://your-api-url.com/api"; // Replace with your base URL
 
 Future<bool> createOrUpdateProfile({
   required String firstName,
   required String midName,
   required String lastName,
-  required String area,
   required String mail,
   required String pincode,
   required String address,
-  required String panchayathName,
-  required String profile,
+  context,
+
+  // required String profile,
   required String phoneNo,
 }) async {
   try {
@@ -21,19 +21,20 @@ Future<bool> createOrUpdateProfile({
       "First_name": firstName,
       "Mid_name": midName,
       "Last_name": lastName,
-      "Area": area,
       "Mail": mail,
       "Pincode": pincode,
       "Address": address,
-      "Panchayath_name": panchayathName,
-      "Profile": profile,
+
+      // "Profile": profile,
       "Phone_no": phoneNo,
     };
 
-    final response = await _dio.post('$baseUrl/profile', data: data);
+    final response = await _dio.put('$baseUrl/ProfileRegapi/$loginId', data: data);
 
-    if (response.statusCode == 201) { // Adjust status code based on your API
+    if (response.statusCode == 201) {
+      // Adjust status code based on your API
       print('Profile created or updated successfully!');
+      Navigator.pop(context);
       return true;
     } else {
       print('Profile update failed with status: ${response.statusCode}');

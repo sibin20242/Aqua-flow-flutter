@@ -7,6 +7,7 @@ import 'package:aquaflow/presentation/user/login.dart';
 import 'package:aquaflow/presentation/user/profile.dart';
 import 'package:aquaflow/presentation/user/time.dart';
 import 'package:aquaflow/services/loginapi.dart';
+import 'package:aquaflow/services/user/viewprofileapi.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen1 extends StatelessWidget {
@@ -54,8 +55,9 @@ class HomeScreen1 extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                accountEmail: const Text(
-                  'PRANAV',
+                accountEmail:  Text(
+                                '${PROFILEDATA?['First_name'] ?? ''} ${PROFILEDATA?['Mid_name'] ?? ''} ${PROFILEDATA?['Last_name'] ?? ''}',
+
                   style: TextStyle(color: Colors.white),
                 ),
                 currentAccountPicture: CircleAvatar(
@@ -74,7 +76,8 @@ class HomeScreen1 extends StatelessWidget {
                   'PROFILE',
                   style: TextStyle(color: Colors.white),
                 ),
-                onTap: () {
+                onTap: ()async {
+         await    fetchUserProfile();
                   Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -172,8 +175,8 @@ class HomeScreen1 extends StatelessWidget {
                   const SizedBox(width: 16),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
+                    children:[
+                      const Text(
                         'WELCOME',
                         style: TextStyle(
                           color: Colors.white,
@@ -182,7 +185,7 @@ class HomeScreen1 extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'ISMAIL',
+                '${PROFILEDATA?['First_name'] ?? ''} ${PROFILEDATA?['Mid_name'] ?? ''} ${PROFILEDATA?['Last_name'] ?? ''}',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,

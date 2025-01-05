@@ -1,6 +1,7 @@
 
 import 'package:aquaflow/presentation/staff/home.dart';
 import 'package:aquaflow/presentation/user/home.dart';
+import 'package:aquaflow/services/user/viewprofileapi.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -41,11 +42,13 @@ Future<bool> loginfun(String email, String password,context) async {
      
       if (userType=='User') {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctxt)=>HomeScreen1()));
-        
+         await    fetchUserProfile();
+         
       }
       else if(userType=='Staff'){
-        print("%%%%%%%%");
          Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctxt)=>HomeScreen2()));
+                
+
       }
       else{
 snackbarwiidget(context, 'login failed');

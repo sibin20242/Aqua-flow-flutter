@@ -16,13 +16,13 @@ Future<bool> signupfun(String email, String username, String password, ) async {
     
 
     // API endpoint
-    final String endpoint = '$baseUrl/signupapi'; // Adjust endpoint as necessary
+    final String endpoint = '$baseUrl/Userreg1/'; // Adjust endpoint as necessary
 
     // Data to send in the POST request
     final data = {
-      "email": email,
-      "username": username,
-      "password": password,
+      "Mail": email,
+      "Username": username,
+      "Password": password,
     };
 
     // Sending POST request
