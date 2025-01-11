@@ -1,3 +1,4 @@
+import 'package:aquaflow/services/user/timeapi.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -43,6 +44,12 @@ class SchedulePage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: TableCalendar(
+                    onDaySelected: (selectedDay, focusedDay) {
+                      print(selectedDay);
+                     viewTimeSchedule(data: {
+                      'Date':selectedDay.toString().substring(0,10)
+                     });
+                    },
                     focusedDay: DateTime.now(),
                     firstDay: DateTime(2020),
                     lastDay: DateTime(2030),

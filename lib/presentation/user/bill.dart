@@ -1,3 +1,4 @@
+import 'package:aquaflow/presentation/user/upi.dart';
 import 'package:flutter/material.dart';
 
 class BillPaymentScreen extends StatelessWidget {
@@ -120,20 +121,27 @@ class BillPaymentScreen extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.grey[200],
+                elevation: 5,
+                backgroundColor: Colors.white,
                 padding: EdgeInsets.all(12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
               onPressed: () {
-                // Payment action
+                
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Payment()),
+                  );
+                
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'assets/images/upi_logo.png', // Provide your UPI logo path
+                  
+                  Image.network(
+                    'https://imgs.search.brave.com/E0DpJk1CN7n-mPAvmvW41f3Dek77yuIygqXp31vX23Y/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA1LzYwLzUwLzE2/LzM2MF9GXzU2MDUw/MTYwN194N2NyeHFC/V2JtYmdLMms4ek9M/MGdJQ2JJYks5aFA2/eS5qcGc', // Provide your UPI logo path
                     height: 24,
                   ),
                   SizedBox(width: 8),
@@ -181,8 +189,4 @@ class BillPaymentScreen extends StatelessWidget {
   }
 }
 
-void main() {
-  runApp(MaterialApp(
-    home: BillPaymentScreen(),
-  ));
-}
+

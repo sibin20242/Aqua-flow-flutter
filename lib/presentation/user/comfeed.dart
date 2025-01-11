@@ -75,6 +75,7 @@ class ComplaintFeedbackScreen extends StatelessWidget {
                 // Complaints Button
                 InkWell(
                   onTap: () {
+                    
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => ComplaintPage()),
@@ -108,40 +109,40 @@ class ComplaintFeedbackScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 40),
                 // Feedback Button
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => FeedbackPage()),
-                    );
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.blueAccent.withOpacity(0.1),
-                        ),
-                        child: const Icon(
-                          Icons.thumb_up,
-                          size: 50,
-                          color: Colors.blueAccent,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      const Text(
-                        "FEEDBACK & RATING\nABOUT STAFF",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                // InkWell(
+                //   onTap: () {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(builder: (context) => FeedbackPage()),
+                //     );
+                //   },
+                //   child: Column(
+                //     children: [
+                //       Container(
+                //         padding: const EdgeInsets.all(16.0),
+                //         decoration: BoxDecoration(
+                //           shape: BoxShape.circle,
+                //           color: Colors.blueAccent.withOpacity(0.1),
+                //         ),
+                //         child: const Icon(
+                //           Icons.thumb_up,
+                //           size: 50,
+                //           color: Colors.blueAccent,
+                //         ),
+                //       ),
+                //       const SizedBox(height: 10),
+                //       const Text(
+                //         "FEEDBACK & RATING\nABOUT STAFF",
+                //         textAlign: TextAlign.center,
+                //         style: TextStyle(
+                //           fontSize: 18,
+                //           fontWeight: FontWeight.bold,
+                //           color: Colors.black,
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ),

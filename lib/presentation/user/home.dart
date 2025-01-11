@@ -7,6 +7,7 @@ import 'package:aquaflow/presentation/user/login.dart';
 import 'package:aquaflow/presentation/user/profile.dart';
 import 'package:aquaflow/presentation/user/time.dart';
 import 'package:aquaflow/services/loginapi.dart';
+import 'package:aquaflow/services/user/billapi.dart';
 import 'package:aquaflow/services/user/viewprofileapi.dart';
 import 'package:flutter/material.dart';
 
@@ -242,7 +243,8 @@ class HomeScreen1 extends StatelessWidget {
                 FeatureCard(
                   icon: Icons.receipt,
                   title: 'Bill & Payment',
-                  onTap: () {
+                  onTap: ()async {
+                   List< Map<String,dynamic>>billdata=await viewBillapi();
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => BillPaymentScreen()),

@@ -1,3 +1,5 @@
+import 'package:aquaflow/services/loginapi.dart';
+import 'package:aquaflow/services/user/feedbackapi.dart';
 import 'package:flutter/material.dart';
 
 
@@ -41,16 +43,16 @@ class _FeedbackPageState extends State<FeedbackPage> {
               ),
             ),
             const SizedBox(height: 16),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-              ),
-              onPressed: () {
-                // Handle feedback submission
-                print('Feedback: ${_feedbackController.text}');
-              },
-              child: const Text('SEND'),
-            ),
+            // ElevatedButton(
+            //   style: ElevatedButton.styleFrom(
+            //     backgroundColor: Colors.green,
+            //   ),
+            //   onPressed: () {
+            //     // Handle feedback submission
+            //     print('Feedback: ${_feedbackController.text}');
+            //   },
+            //   child: const Text('SEND'),
+            // ),
             const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -74,6 +76,17 @@ class _FeedbackPageState extends State<FeedbackPage> {
                 backgroundColor: Colors.yellow,
               ),
               onPressed: () {
+
+
+
+                submitFeedback(data: {
+                  'USER': loginId,
+                  // 'Complaint_no': 2 ,
+                  // 'Consumer_no': 4 ,
+                  'Rating': _selectedRating,
+                  'Feedback': _feedbackController.text
+
+                });
                 // Handle rating submission
                 print('Rating: $_selectedRating');
               },

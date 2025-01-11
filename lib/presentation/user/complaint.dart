@@ -1,3 +1,6 @@
+import 'package:aquaflow/presentation/user/feedbackrating.dart';
+import 'package:aquaflow/services/loginapi.dart';
+import 'package:aquaflow/services/user/complaintapi.dart';
 import 'package:flutter/material.dart';
 
 
@@ -95,19 +98,29 @@ class _ComplaintPageState extends State<ComplaintPage> {
                 onPressed: () {
                   // Handle submit action
                   if (selectedComplaintType != null && _complaintController.text.isNotEmpty) {
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: Text('Complaint Submitted'),
-                        content: Text('Your complaint has been submitted successfully!'),
-                        actions: [
-                          TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: Text('OK'),
-                          ),
-                        ],
-                      ),
-                    );
+
+
+
+
+                    submitComplaint(data: {
+                      'USER':loginId,
+                      'complaint_type': selectedComplaintType,
+                      'Complaints': _complaintController.text
+
+                    });
+                    // showDialog(
+                    //   context: context,
+                    //   builder: (context) => AlertDialog(
+                    //     title: Text('Complaint Submitted'),
+                    //     content: Text('Your complaint has been submitted successfully!'),
+                    //     actions: [
+                    //       TextButton(
+                    //         onPressed: () => Navigator.pop(context),
+                    //         child: Text('OK'),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -122,6 +135,23 @@ class _ComplaintPageState extends State<ComplaintPage> {
                 ),
               ),
             ),
+
+            SizedBox(height: 30,),
+            Expanded(child: ListView.builder(itemCount: 3,
+              itemBuilder: (context, index) {
+              return ListTile(
+                title: Text('Complaint $index'),
+                subtitle: Text('Complaint:conplaint $index'),
+                trailing: IconButton(onPressed: (){
+                     
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FeedbackPage()),
+                    );
+                  
+                }, icon: Icon(Icons.star,color: Colors.amber,)),
+                );
+            },))
           ],
         ),
       ),

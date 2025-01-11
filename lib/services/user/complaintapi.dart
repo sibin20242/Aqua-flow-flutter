@@ -1,20 +1,17 @@
+import 'package:aquaflow/services/loginapi.dart';
 import 'package:dio/dio.dart';
 
 Dio _dio = Dio();
 
-String baseUrl = "http://your-api-url.com/api"; // Replace with your base URL
+
 
 Future<bool> submitComplaint({
-  required String user,
-  required String complaints,
+  required data
 }) async {
   try {
-    final data = {
-      "USER": user,
-      "Complaints": complaints,
-    };
+ 
 
-    final response = await _dio.post('$baseUrl/complaint', data: data);
+    final response = await _dio.post('$baseUrl/ComplaintRegapi', data: data);
 
     if (response.statusCode == 201) { // Adjust status code based on your API
       print('Complaint submitted successfully!');

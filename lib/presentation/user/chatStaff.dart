@@ -1,9 +1,7 @@
+import 'package:aquaflow/services/user/chatapi.dart';
 import 'package:flutter/material.dart';
 
-
-
 class ChatScreen3 extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +14,6 @@ class ChatScreen3 extends StatelessWidget {
               letterSpacing: 1.5,
             )),
         centerTitle: true,
-      
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
@@ -48,7 +45,7 @@ class ChatScreen3 extends StatelessWidget {
               ],
             ),
           ),
-          const ChatInputField(),
+           ChatInputField(),
         ],
       ),
     );
@@ -104,8 +101,8 @@ class MessageBubble extends StatelessWidget {
 }
 
 class ChatInputField extends StatelessWidget {
-  const ChatInputField({super.key});
-
+  ChatInputField({super.key});
+  TextEditingController _textController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -115,6 +112,7 @@ class ChatInputField extends StatelessWidget {
         children: [
           Expanded(
             child: TextField(
+              controller: _textController,
               decoration: InputDecoration(
                 hintText: 'Type...',
                 hintStyle: const TextStyle(color: Colors.grey),
@@ -132,7 +130,10 @@ class ChatInputField extends StatelessWidget {
             backgroundColor: Colors.blue,
             child: IconButton(
               icon: const Icon(Icons.send, color: Colors.white),
-              onPressed: () {},
+              onPressed: () async {
+                await sendMessage(
+                    senderId: 3, receiverId: 1, message: _textController.text);
+              },
             ),
           ),
         ],
