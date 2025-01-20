@@ -36,7 +36,7 @@ Future<List<Map<String,dynamic>>> viewBillapi(
     final response = await _dio.get('$baseUrl/Billapi', );
 
     if (response.statusCode == 201||response.statusCode == 200) { // Adjust status code based on your API
-      print('Bill created successfully!');
+     print(response.data);
       return List<Map<String,dynamic>>.from(response.data);
     } else {
       print('Bill creation failed with status: ${response.statusCode}');

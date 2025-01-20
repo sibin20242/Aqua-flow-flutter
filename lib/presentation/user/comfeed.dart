@@ -1,6 +1,6 @@
+import 'package:aquaflow/services/user/viewComplaint.dart';
 import 'package:flutter/material.dart';
 import 'package:aquaflow/presentation/user/complaint.dart';
-import 'package:aquaflow/presentation/user/feedbackrating.dart';
 
 class ComplaintFeedbackScreen extends StatelessWidget {
   @override
@@ -74,11 +74,12 @@ class ComplaintFeedbackScreen extends StatelessWidget {
               children: [
                 // Complaints Button
                 InkWell(
-                  onTap: () {
+                  onTap: ()async {
+               List<Map<String, dynamic>>complaints=await     viewComplaint();
                     
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ComplaintPage()),
+                      MaterialPageRoute(builder: (context) => ComplaintPage(complaints: complaints,)),
                     );
                   },
                   child: Column(
@@ -152,8 +153,4 @@ class ComplaintFeedbackScreen extends StatelessWidget {
   }
 }
 
-void main() {
-  runApp(MaterialApp(
-    home: ComplaintFeedbackScreen(),
-  ));
-}
+

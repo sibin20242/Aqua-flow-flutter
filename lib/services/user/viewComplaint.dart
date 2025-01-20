@@ -5,15 +5,13 @@ Dio _dio = Dio();
 
 
 
-Future<List<Map<String,dynamic>>> viewTimeSchedule({
-  required date
-}) async {
+Future<List<Map<String,dynamic>>> viewComplaint() async {
   try {
     // Data to be sent in the POST request
    
 
     // Sending POST request
-    final response = await _dio.get('$baseUrl/Timeapi/$date',);
+    final response = await _dio.get('$baseUrl/Complaintapi',);
 
     if (response.statusCode == 200) { // Adjust status code based on your API
       print('Time schedule created successfully!');

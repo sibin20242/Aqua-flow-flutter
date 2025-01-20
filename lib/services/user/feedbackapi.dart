@@ -1,11 +1,12 @@
 import 'package:aquaflow/services/loginapi.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 Dio _dio = Dio();
 
 
 Future<bool> submitFeedback({
-data
+data,context
  
 }) async {
   try {
@@ -13,8 +14,10 @@ data
 
     final response = await _dio.post('$baseUrl/Feedbackapi', data: data);
 
-    if (response.statusCode == 200) { // Adjust status code based on your API
+    if (response.statusCode == 201) { // Adjust status code based on your API
       print('Feedback submitted successfully!');
+      Navigator.pop(context);
+      snackbarwiidget(context, 'send');
       return true;
     } else {
       print('Failed to submit feedback with status: ${response.statusCode}');

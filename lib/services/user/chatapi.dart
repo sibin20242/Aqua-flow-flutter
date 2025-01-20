@@ -6,8 +6,8 @@ Dio _dio = Dio();
 
 
   Future<bool> sendMessage({
-    required int senderId,
-    required int receiverId,
+    required  senderId,
+    required  receiverId,
     required String message,
   }) async {
     try {
@@ -17,8 +17,9 @@ Dio _dio = Dio();
       };
 
       final response = await _dio.post('$baseUrl/chat/$senderId/$receiverId', data: data);
-
-      if (response.statusCode == 200) {
+print(response.data);
+      if (response.statusCode == 201) {
+       
         print('Message sent successfully!');
         return true;
       } else {
@@ -32,15 +33,15 @@ Dio _dio = Dio();
   }
 
   Future<List<Map<String, dynamic>>?> fetchMessages({
-    required int senderId,
-    required int receiverId,
+    required  senderId,
+    required  receiverId,
   }) async {
     try {
-      final response = await _dio.get('$baseUrl/chat/messages', queryParameters: {
-        "senderId": senderId,
-        "receiverId": receiverId,
+      final response = await _dio.get('$baseUrl/chat/$senderId/$receiverId', queryParameters: {
+        "message": senderId,
+        
       });
-
+print(response.data);
       if (response.statusCode == 200) {
         print('Messages fetched successfully!');
         return List<Map<String, dynamic>>.from(response.data);

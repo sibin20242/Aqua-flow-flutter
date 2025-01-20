@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 
 
 class ComplaintPage extends StatefulWidget {
+  final complaints;
+
+  const ComplaintPage({super.key, this.complaints});
   @override
   _ComplaintPageState createState() => _ComplaintPageState();
 }
@@ -139,9 +142,10 @@ class _ComplaintPageState extends State<ComplaintPage> {
             SizedBox(height: 30,),
             Expanded(child: ListView.builder(itemCount: 3,
               itemBuilder: (context, index) {
+                final cmplint=widget.complaints[index];
               return ListTile(
-                title: Text('Complaint $index'),
-                subtitle: Text('Complaint:conplaint $index'),
+                title: Text(cmplint['Complaints']??'not available'),
+                subtitle: Text(cmplint['complaint_type']??"not available"),
                 trailing: IconButton(onPressed: (){
                      
                     Navigator.push(

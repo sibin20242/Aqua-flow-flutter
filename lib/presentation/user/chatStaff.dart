@@ -1,3 +1,4 @@
+import 'package:aquaflow/services/loginapi.dart';
 import 'package:aquaflow/services/user/chatapi.dart';
 import 'package:flutter/material.dart';
 
@@ -27,21 +28,7 @@ class ChatScreen3 extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.all(16.0),
               children: const [
-                MessageBubble(
-                  sender: 'ISMAIL',
-                  text: 'Hello!',
-                  isSender: true,
-                ),
-                MessageBubble(
-                  sender: 'USER',
-                  text: 'Hi there!',
-                  isSender: false,
-                ),
-                MessageBubble(
-                  sender: 'ISMAIL',
-                  text: 'How can I help you today?',
-                  isSender: true,
-                ),
+              
               ],
             ),
           ),
@@ -100,9 +87,16 @@ class MessageBubble extends StatelessWidget {
   }
 }
 
-class ChatInputField extends StatelessWidget {
+class ChatInputField extends StatefulWidget {
   ChatInputField({super.key});
+
+  @override
+  State<ChatInputField> createState() => _ChatInputFieldState();
+}
+
+class _ChatInputFieldState extends State<ChatInputField> {
   TextEditingController _textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -132,7 +126,11 @@ class ChatInputField extends StatelessWidget {
               icon: const Icon(Icons.send, color: Colors.white),
               onPressed: () async {
                 await sendMessage(
-                    senderId: 3, receiverId: 1, message: _textController.text);
+                    senderId: loginId, receiverId: 1, message: _textController.text);
+                   await  fetchMessages(senderId:1, receiverId: loginId!);
+                   setState(() {
+                     
+                   });
               },
             ),
           ),

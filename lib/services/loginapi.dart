@@ -12,7 +12,7 @@ String? loginId;
 String? userType;
 
 // Base URL for the API (correct the format of the IP address)
-String baseUrl = 'http://192.168.1.99:5000'; // Replace with the actual IP and port
+String baseUrl = 'http://192.168.1.9:5000'; // Replace with the actual IP and port
 
 // Login function
 Future<bool> loginfun(String email, String password,context) async {
@@ -41,8 +41,9 @@ Future<bool> loginfun(String email, String password,context) async {
       
      
       if (userType=='User') {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctxt)=>HomeScreen1()));
          await    fetchUserProfile();
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctxt)=>HomeScreen1()));
+        
          
       }
       else if(userType=='Staff'){

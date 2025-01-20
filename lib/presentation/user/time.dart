@@ -2,7 +2,26 @@ import 'package:aquaflow/services/user/timeapi.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class SchedulePage extends StatelessWidget {
+class SchedulePage extends StatefulWidget {
+  @override
+  State<SchedulePage> createState() => _SchedulePageState();
+}
+
+class _SchedulePageState extends State<SchedulePage> {
+  List<Map<String, dynamic>> timedata = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetch();
+  }
+
+  void fetch() async {
+    timedata = await viewTimeSchedule(
+        date: DateTime.now().toString().substring(0, 10));
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,11 +63,12 @@ class SchedulePage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: TableCalendar(
-                    onDaySelected: (selectedDay, focusedDay) {
+                    onDaySelected: (selectedDay, focusedDay) async {
                       print(selectedDay);
-                     viewTimeSchedule(data: {
-                      'Date':selectedDay.toString().substring(0,10)
-                     });
+                      timedata = await viewTimeSchedule(date: 
+                        selectedDay.toString().substring(0, 10)
+                      );
+                      setState(() {});
                     },
                     focusedDay: DateTime.now(),
                     firstDay: DateTime(2020),
@@ -89,17 +109,17 @@ class SchedulePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ScheduleItem(
-                    label: 'Morning',
-                    time: '8:00 am - 10:00 am',
-                    icon: Icons.wb_sunny,
-                  ),
-                  SizedBox(height: 16),
-                  ScheduleItem(
-                    label: 'Evening',
-                    time: '5:00 pm - 7:00 pm',
-                    icon: Icons.nights_stay,
-                  ),
+                  Expanded(
+                      child: ListView.builder(
+                        itemCount: timedata.length,
+                    itemBuilder: (context, index) => ScheduleItem(
+                      label: timedata[index]['Area']??"not available",
+                      time: timedata.isNotEmpty
+                          ? timedata[index]['Time'].toString().substring(0, 5)
+                          : 'not available',
+                      icon: Icons.wb_sunny,
+                    ),
+                  )),
                 ],
               ),
             ),
@@ -112,7 +132,7 @@ class SchedulePage extends StatelessWidget {
 
 class ScheduleItem extends StatelessWidget {
   final String label;
-  final String time;
+  final time;
   final IconData icon;
 
   const ScheduleItem({
@@ -139,7 +159,7 @@ class ScheduleItem extends StatelessWidget {
               ),
             ),
             Text(
-              time,
+              time.toString(),
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey[700],
