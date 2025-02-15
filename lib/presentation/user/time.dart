@@ -112,13 +112,26 @@ class _SchedulePageState extends State<SchedulePage> {
                   Expanded(
                       child: ListView.builder(
                         itemCount: timedata.length,
-                    itemBuilder: (context, index) => ScheduleItem(
-                      label: timedata[index]['Area']??"not available",
+                    itemBuilder: (context, index) {
+                      return Column(children: [
+                        ScheduleItem(
+                      label: 'morning',
                       time: timedata.isNotEmpty
-                          ? timedata[index]['Time'].toString().substring(0, 5)
+                          ? '${timedata[index]['morning_Time'].toString().substring(0, 5)} '
                           : 'not available',
+                          
                       icon: Icons.wb_sunny,
                     ),
+                      ScheduleItem(
+                      label: 'eve',
+                      time: timedata.isNotEmpty
+                          ? ' ${timedata[index]['evening_Time'].toString().substring(0, 5)}'
+                          : 'not available',
+                          
+                      icon: Icons.wb_sunny,
+                    ),
+                      ],);
+                    }
                   )),
                 ],
               ),
