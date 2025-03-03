@@ -30,7 +30,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
         backgroundColor: Colors.indigo[900],
         title: Text(
           'AQUA FLOW',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold),
         ),
         
         actions: [

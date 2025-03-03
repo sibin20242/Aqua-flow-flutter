@@ -29,7 +29,7 @@ class _SchedulePageState extends State<SchedulePage> {
         backgroundColor: Colors.indigo[900],
         elevation: 0,
         title: Text('AQUA FLOW',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold)),
         actions: [
           IconButton(
             icon: Icon(Icons.notifications),
@@ -123,7 +123,7 @@ class _SchedulePageState extends State<SchedulePage> {
                       icon: Icons.wb_sunny,
                     ),
                       ScheduleItem(
-                      label: 'eve',
+                      label: 'evening',
                       time: timedata.isNotEmpty
                           ? ' ${timedata[index]['evening_Time'].toString().substring(0, 5)}'
                           : 'not available',

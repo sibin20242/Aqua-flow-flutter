@@ -15,48 +15,48 @@ class BillPaymentScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.notifications),
-            onPressed: () {},
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: Icon(Icons.notifications),
+        //     onPressed: () {},
+        //   ),
+        // ],
       ),
       body: Column(
         children: [
           // Decorative Header
-          Container(
-            height: 100,
-            decoration: BoxDecoration(
-              color: Colors.blue[900],
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30),
-              ),
-            ),
-            child: Row(
-              children: [
-                IconButton(
-                  icon: Icon(Icons.arrow_back, color: Colors.white),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-                Expanded(
-                  child: Text(
-                    'Bill & Payment',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(width: 48), // Placeholder to balance the layout
-              ],
-            ),
-          ),
+          // Container(
+          //   height: 100,
+          //   decoration: BoxDecoration(
+          //     color: Colors.blue[900],
+          //     borderRadius: BorderRadius.only(
+          //       bottomLeft: Radius.circular(30),
+          //       bottomRight: Radius.circular(30),
+          //     ),
+          //   ),
+          //   child: Row(
+          //     children: [
+          //       IconButton(
+          //         icon: Icon(Icons.arrow_back, color: Colors.white),
+          //         onPressed: () {
+          //           Navigator.pop(context);
+          //         },
+          //       ),
+          //       // Expanded(
+          //       //   child: Text(
+          //       //     'Bill & Payment',
+          //       //     style: TextStyle(
+          //       //       color: Colors.white,
+          //       //       fontSize: 18,
+          //       //       fontWeight: FontWeight.bold,
+          //       //     ),
+          //       //     textAlign: TextAlign.center,
+          //       //   ),
+          //       // ),
+          //       SizedBox(width: 48), // Placeholder to balance the layout
+          //     ],
+          //   ),
+          // ),
           SizedBox(height: 20),
           // Bill Details
           Padding(

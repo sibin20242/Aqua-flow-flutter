@@ -16,10 +16,10 @@ class ApplicationFormScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+          backgroundColor: Colors.blue[900],
         title: const Text(
           "AQUA FLOW",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),
         ),
         centerTitle: true,
         actions: [

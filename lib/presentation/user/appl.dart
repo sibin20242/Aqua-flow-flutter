@@ -11,7 +11,7 @@ class Application extends StatelessWidget {
         elevation: 0,
         title: const Text(
           'AQUA FLOW',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white, fontSize: 20),
         ),
         actions: [
           IconButton(

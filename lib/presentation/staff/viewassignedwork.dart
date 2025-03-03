@@ -1,3 +1,4 @@
+import 'package:aquaflow/presentation/staff/chatUser.dart';
 import 'package:flutter/material.dart';
 
 class AssignedWorkScreen1 extends StatelessWidget {
@@ -109,7 +110,7 @@ class AssignedWorkScreen1 extends StatelessWidget {
                     TextField(
                       maxLines: 5,
                       decoration: InputDecoration(
-                        hintText: 'Enter your complaints here...',
+                        hintText: 'complaints here...',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -118,9 +119,16 @@ class AssignedWorkScreen1 extends StatelessWidget {
                     ),
                     const Spacer(),
                     ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ChatScreen1(),
+                                ),
+                              );
+                      },
                       icon: const Icon(Icons.chat, color: Colors.red),
-                      label: const Text('Chat With user name'),
+                      label: const Text('Chat With user'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         foregroundColor: Colors.black,

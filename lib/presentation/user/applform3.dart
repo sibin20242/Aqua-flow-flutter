@@ -317,7 +317,7 @@ class _UploadDocumentsScreenState extends State<UploadDocumentsScreen> {
       appBar: AppBar(
         title: const Text(
           "AQUA FLOW",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.blue[900],
         actions: [

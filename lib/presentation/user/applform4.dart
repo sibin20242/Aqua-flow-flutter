@@ -274,7 +274,7 @@ class _ApplicationFormScreenState extends State<applicationforms> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("AQUA FLOW", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text("AQUA FLOW", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
         backgroundColor: Colors.blue[900],
       ),
       body: SingleChildScrollView(

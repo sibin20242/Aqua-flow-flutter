@@ -15,7 +15,7 @@ class ApplicationStatusScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("PWSMS", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text("AQUA FLOW", style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
         backgroundColor: Colors.blue[900],
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -33,24 +33,25 @@ class ApplicationStatusScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
-            color: Colors.blue[900],
-            padding: EdgeInsets.all(10),
-            child: Text(
-              "AQUA FLOW",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+          // Container(
+          //   color: Colors.blue[900],
+          //   padding: EdgeInsets.all(10),
+          //   child: Text(
+          //     ,
+          //     textAlign: TextAlign.center,
+          //     style: TextStyle(
+          //       color: Colors.white,
+          //       fontSize: 20,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(
               "View Your's Application Status",
               style: TextStyle(
+                
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
