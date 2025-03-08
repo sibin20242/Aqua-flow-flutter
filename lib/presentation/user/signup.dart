@@ -6,8 +6,6 @@
 //     TextEditingController _emailController = TextEditingController();
 //       TextEditingController _usernameController = TextEditingController();
 //   TextEditingController _passwordController = TextEditingController();
-  
-
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -74,7 +72,7 @@
 //                               prefixIcon: Icon(Icons.email, color: Color.fromARGB(227, 13, 51, 117)),
 //                               labelText: 'Email or Mobile',
 //                               labelStyle: TextStyle(color: Color.fromARGB(227, 13, 51, 117)),
-                              
+
 //                               filled: true,
 //                               fillColor: Colors.grey[200],
 //                               border: OutlineInputBorder(
@@ -99,7 +97,7 @@
 //                               prefixIcon: Icon(Icons.person, color: Color.fromARGB(227, 13, 51, 117)),
 //                               labelText: 'Full Name',
 //                               labelStyle: TextStyle(color: Color.fromARGB(227, 13, 51, 117)),
-                            
+
 //                               filled: true,
 //                               fillColor: Colors.grey[200],
 //                               border: OutlineInputBorder(
@@ -117,7 +115,6 @@
 //                               return null;
 //                             },
 //                           ),
-                          
 
 //                        SizedBox(height: 20),
 //                           TextFormField(
@@ -127,7 +124,7 @@
 //                               prefixIcon: Icon(Icons.lock, color: Color.fromARGB(227, 13, 51, 117)),
 //                               labelText: 'Password',
 //                               labelStyle: TextStyle(color: Color.fromARGB(227, 13, 51, 117)),
-                              
+
 //                               filled: true,
 //                               fillColor: Colors.grey[200],
 //                               border: OutlineInputBorder(
@@ -152,7 +149,7 @@
 //                               prefixIcon: Icon(Icons.lock_outline, color: Color.fromARGB(227, 13, 51, 117)),
 //                               labelText: 'Confirm Password',
 //                               labelStyle: TextStyle(color: Color.fromARGB(227, 13, 51, 117)),
-                              
+
 //                               filled: true,
 //                               fillColor: Colors.grey[200],
 //                               border: OutlineInputBorder(
@@ -227,11 +224,7 @@
 //   }
 // }
 
-
-
-
-
-
+import 'package:aquaflow/services/user/userregapi.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
 
@@ -245,7 +238,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
 
   String? _selectedArea;
 
@@ -330,7 +324,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           TextFormField(
                             controller: _emailController,
                             decoration: inputDecoration.copyWith(
-                              prefixIcon: const Icon(Icons.email, color: Color.fromARGB(227, 13, 51, 117)),
+                              prefixIcon: const Icon(Icons.email,
+                                  color: Color.fromARGB(227, 13, 51, 117)),
                               labelText: 'Email or Mobile',
                             ),
                             validator: (value) {
@@ -344,7 +339,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           TextFormField(
                             controller: _usernameController,
                             decoration: inputDecoration.copyWith(
-                              prefixIcon: const Icon(Icons.person, color: Color.fromARGB(227, 13, 51, 117)),
+                              prefixIcon: const Icon(Icons.person,
+                                  color: Color.fromARGB(227, 13, 51, 117)),
                               labelText: 'Full Name',
                             ),
                             validator: (value) {
@@ -358,7 +354,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           DropdownButtonFormField<String>(
                             decoration: inputDecoration.copyWith(
                               labelText: 'Select Your Area',
-                              prefixIcon: const Icon(Icons.location_on, color: Color.fromARGB(227, 13, 51, 117)),
+                              prefixIcon: const Icon(Icons.location_on,
+                                  color: Color.fromARGB(227, 13, 51, 117)),
                             ),
                             value: _selectedArea,
                             items: _areaList
@@ -384,7 +381,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                             controller: _passwordController,
                             obscureText: true,
                             decoration: inputDecoration.copyWith(
-                              prefixIcon: const Icon(Icons.lock, color: Color.fromARGB(227, 13, 51, 117)),
+                              prefixIcon: const Icon(Icons.lock,
+                                  color: Color.fromARGB(227, 13, 51, 117)),
                               labelText: 'Password',
                             ),
                             validator: (value) {
@@ -402,7 +400,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                             controller: _confirmPasswordController,
                             obscureText: true,
                             decoration: inputDecoration.copyWith(
-                              prefixIcon: const Icon(Icons.lock_outline, color: Color.fromARGB(227, 13, 51, 117)),
+                              prefixIcon: const Icon(Icons.lock_outline,
+                                  color: Color.fromARGB(227, 13, 51, 117)),
                               labelText: 'Confirm Password',
                             ),
                             validator: (value) {
@@ -420,11 +419,25 @@ class _RegistrationFormState extends State<RegistrationForm> {
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 log('Registration successful');
+                                registerUser(
+                                  address: '',
+                                  area: _selectedArea!,
+                                  firstName: _usernameController.text,
+                                  lastName: '',
+                                  mail: _emailController.text,
+                                  midName: '',
+                                  panchayathName: '',
+                                  phoneNo: '',
+                                  pincode: '',
+                                  profile: '',
+                                  password: _passwordController.text,
+                                );
                                 // Add your signup function here
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color.fromARGB(227, 13, 51, 117),
+                              backgroundColor:
+                                  const Color.fromARGB(227, 13, 51, 117),
                               padding: const EdgeInsets.symmetric(vertical: 14),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -433,11 +446,13 @@ class _RegistrationFormState extends State<RegistrationForm> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: const [
-                                Icon(Icons.app_registration, color: Colors.white),
+                                Icon(Icons.app_registration,
+                                    color: Colors.white),
                                 SizedBox(width: 8),
                                 Text(
                                   "Register",
-                                  style: TextStyle(fontSize: 18, color: Colors.white),
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.white),
                                 ),
                               ],
                             ),

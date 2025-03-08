@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 class Login extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _emailController = TextEditingController(text: 'sayanth@gmail.com');
+  TextEditingController _passwordController = TextEditingController(text: '123');
 
   @override
   Widget build(BuildContext context) {

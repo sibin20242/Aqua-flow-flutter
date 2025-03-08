@@ -116,16 +116,16 @@ class _SchedulePageState extends State<SchedulePage> {
                       return Column(children: [
                         ScheduleItem(
                       label: 'morning',
-                      time: timedata.isNotEmpty
-                          ? '${timedata[index]['morning_Time'].toString().substring(0, 5)} '
+                      time: timedata[index]['morning_Time']!=null
+                          ? '${timedata[index]['morning_Time'].toString()} '
                           : 'not available',
                           
                       icon: Icons.wb_sunny,
                     ),
                       ScheduleItem(
                       label: 'evening',
-                      time: timedata.isNotEmpty
-                          ? ' ${timedata[index]['evening_Time'].toString().substring(0, 5)}'
+                      time: timedata[index]['evening_Time']!=null
+                          ? ' ${timedata[index]['evening_Time'].toString()}'
                           : 'not available',
                           
                       icon: Icons.wb_sunny,

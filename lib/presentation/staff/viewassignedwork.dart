@@ -1,20 +1,24 @@
 import 'package:aquaflow/presentation/staff/chatUser.dart';
+import 'package:aquaflow/presentation/staff/updatereport.dart';
 import 'package:flutter/material.dart';
 
 class AssignedWorkScreen1 extends StatelessWidget {
+  final data;
+
+  const AssignedWorkScreen1({super.key, this.data});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: const Text('PWSMS'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: () {},
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.black,
+      //   title: const Text('PWSMS'),
+      //   actions: [
+      //     IconButton(
+      //       icon: const Icon(Icons.notifications),
+      //       onPressed: () {},
+      //     ),
+      //   ],
+      // ),
       body: Column(
         children: [
           Container(
@@ -24,8 +28,10 @@ class AssignedWorkScreen1 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  children: const [
-                    Icon(Icons.arrow_back, color: Colors.white),
+                  children:  [
+                    IconButton(onPressed: (){
+                      Navigator.pop(context);
+                    }, icon: Icon(Icons.arrow_back, color: Colors.white),),
                     SizedBox(width: 8.0),
                     Text(
                       'Assigned Work',
@@ -33,19 +39,19 @@ class AssignedWorkScreen1 extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  children: const [
-                    Text(
-                      'PRANAV',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    SizedBox(width: 8.0),
-                    CircleAvatar(
-                      backgroundColor: Colors.grey,
-                      child: Icon(Icons.person, color: Colors.white),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   children: const [
+                //     Text(
+                //       'PRANAV',
+                //       style: TextStyle(color: Colors.white),
+                //     ),
+                //     SizedBox(width: 8.0),
+                //     CircleAvatar(
+                //       backgroundColor: Colors.grey,
+                //       child: Icon(Icons.person, color: Colors.white),
+                //     ),
+                //   ],
+                // ),
               ],
             ),
           ),
@@ -63,16 +69,16 @@ class AssignedWorkScreen1 extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'PANCHAYATH NAME',
+                     Text(
+                      data['Area']??'not available',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 16.0),
                     Row(
-                      children: const [
+                      children:  [
                         Icon(Icons.person, color: Colors.grey),
                         SizedBox(width: 8.0),
-                        Text('PRANAV'),
+                        Text(data['USER_NAME']??'not available'),
                       ],
                     ),
                     const SizedBox(height: 16.0),
@@ -91,12 +97,12 @@ class AssignedWorkScreen1 extends StatelessWidget {
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text('CONSUMER NUMBER    :   11112222'),
+                        children:  [
+                          Text('CONSUMER NUMBER    :  ${data['CONSUMER_NO']??'not'}'),
                           SizedBox(height: 8.0),
-                          Text('APPLICATION NUMBER:   012'),
+                          
                           SizedBox(height: 8.0),
-                          Text('PHONE NUMBER       :   6528867540'),
+                          Text('PHONE NUMBER       :    ${data['PHONE_NO']??'not'}')
                         ],
                       ),
                     ),
@@ -106,16 +112,10 @@ class AssignedWorkScreen1 extends StatelessWidget {
                       'Complaints',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(height: 8.0),
-                    TextField(
-                      maxLines: 5,
-                      decoration: InputDecoration(
-                        hintText: 'complaints here...',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        
-                      ),
+                     SizedBox(height: 8.0),
+                     if(data['COMPLAINTS'].length!=0)
+                    Text(' ${data['COMPLAINTS'][0]['Complaint']??'not avail'}'
+
                     ),
                     const Spacer(),
                     ElevatedButton.icon(
@@ -123,12 +123,12 @@ class AssignedWorkScreen1 extends StatelessWidget {
                         Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ChatScreen1(),
+                                  builder: (context) => UpdateReportScreen(data:data),
                                 ),
                               );
                       },
                       icon: const Icon(Icons.chat, color: Colors.red),
-                      label: const Text('Chat With user'),
+                      label: const Text('Update report'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         foregroundColor: Colors.black,

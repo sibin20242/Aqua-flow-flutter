@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 Dio _dio = Dio();
 
   Future<bool> registerUser({
+    required String password,
     required String firstName,
     required String midName,
     required String lastName,
@@ -22,15 +23,17 @@ Dio _dio = Dio();
         "Mid_name": midName,
         "Last_name": lastName,
         "Area": area,
-        "Mail": mail,
+        'email':mail,
+        "username": mail,
         "Pincode": pincode,
         "Address": address,
         "Panchayath_name": panchayathName,
         "Profile": profile,
         "Phone_no": phoneNo,
+        "password": password,
       };
 
-      final response = await _dio.post('$baseUrl/register',data: data);
+      final response = await _dio.post('$baseUrl/userregapi',data: data);
 
       if (response.statusCode == 201) { // Adjust status code based on your API
         print('User registered successfully!');

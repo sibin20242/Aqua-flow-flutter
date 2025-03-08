@@ -37,7 +37,7 @@ print(response.data);
     required  receiverId,
   }) async {
     try {
-      final response = await _dio.get('$baseUrl/chat/$senderId/$receiverId', queryParameters: {
+      final response = await _dio.get('$baseUrl/chat/$senderId/$receiverId', data: {
         "message": senderId,
         
       });

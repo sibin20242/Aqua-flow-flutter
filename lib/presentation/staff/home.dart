@@ -204,18 +204,13 @@ class HomeScreen2 extends StatelessWidget {
                     );
                   },
                 ),
-                _buildMenuCard(
-                  icon: Icons.update,
-                  title: 'Update report',
-                  onTap: () {
-                    Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => UpdateReportScreen(),
-                                ),
-                              );
-                  },
-                ),
+                // _buildMenuCard(
+                //   icon: Icons.update,
+                //   title: 'Update report',
+                //   onTap: () {
+                   
+                //   },
+                // ),
                 _buildMenuCard(
                   icon: Icons.chat,
                   title: 'Chat With user & authority',
