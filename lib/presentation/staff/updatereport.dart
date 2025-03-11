@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:aquaflow/presentation/staff/home.dart';
 import 'package:aquaflow/services/loginapi.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -59,6 +60,7 @@ class _UpdateReportScreenState extends State<UpdateReportScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Report updated successfully!")),
         );
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> HomeScreen2()), (route) => false,);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Failed to update report. Try again.")),

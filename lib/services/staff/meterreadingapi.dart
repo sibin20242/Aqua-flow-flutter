@@ -1,3 +1,4 @@
+import 'package:aquaflow/services/loginapi.dart';
 import 'package:dio/dio.dart';
 
 Dio _dio = Dio();
@@ -30,7 +31,7 @@ Future<bool> submitMeterReading({
       "Total_Amount": totalAmount,
     };
 
-    final response = await _dio.post('$baseUrl/meterreading', data: data);
+    final response = await _dio.post('$baseUrl/Userdetailsapi/$loginId', data: data);
 
     if (response.statusCode == 200) { // Adjust status code based on your API
       print('Meter reading submitted successfully!');
@@ -43,4 +44,4 @@ Future<bool> submitMeterReading({
     print('Meter Reading API Error: $e');
     return false;
   }
-}
+} 

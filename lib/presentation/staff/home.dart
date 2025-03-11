@@ -1,5 +1,6 @@
 import 'package:aquaflow/presentation/staff/assignedwork.dart';
 import 'package:aquaflow/presentation/staff/chatselect.dart';
+import 'package:aquaflow/presentation/staff/staffprofile.dart';
 import 'package:aquaflow/presentation/staff/updatereading.dart';
 import 'package:aquaflow/presentation/staff/updatereport.dart';
 import 'package:aquaflow/presentation/staff/userdetails.dart';
@@ -7,15 +8,29 @@ import 'package:aquaflow/presentation/user/language.dart';
 import 'package:aquaflow/presentation/user/login.dart';
 import 'package:aquaflow/presentation/user/profile.dart';
 import 'package:aquaflow/services/loginapi.dart';
+import 'package:aquaflow/services/staff/staffviewprofileapi.dart';
+import 'package:aquaflow/services/user/profileapi.dart';
 import 'package:aquaflow/services/user/viewprofileapi.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen2 extends StatelessWidget {
+class HomeScreen2 extends StatefulWidget {
+  @override
+  State<HomeScreen2> createState() => _HomeScreen2State();
+}
+
+class _HomeScreen2State extends State<HomeScreen2> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchStaffProfile();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
-       appBar: AppBar(
+      appBar: AppBar(
         title: const Text(
           'AQUA FLOW',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -38,8 +53,7 @@ class HomeScreen2 extends StatelessWidget {
           ),
         ),
       ),
-    
-          drawer: Drawer(
+      drawer: Drawer(
         child: Container(
           color: const Color.fromARGB(255, 15, 1, 48),
           child: ListView(
@@ -55,20 +69,26 @@ class HomeScreen2 extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                accountEmail:  Text(
-                                '${PROFILEDATA?['First_name'] ?? ''} ${PROFILEDATA?['Mid_name'] ?? ''} ${PROFILEDATA?['Last_name'] ?? ''}',
-
+                accountEmail: Text('',
+                  // '${staffPROFILEDATA?['First_name'] ?? ''} ${staffPROFILEDATA?['Mid_name'] ?? ''} ${staffPROFILEDATA?['Last_name'] ?? ''}',
                   style: TextStyle(color: Colors.white),
                 ),
-                currentAccountPicture: CircleAvatar(
-                  backgroundColor: Colors.blue.shade100,
-                  child: Icon(
-                    Icons.person,
-                    size: 40,
-                    color: Colors.blue.shade900,
+                currentAccountPicture: ValueListenableBuilder(
+                  valueListenable: staffImage,
+                  builder: (context, value, child) =>
+                  CircleAvatar(
+                    backgroundImage: staffImage.value == null? NetworkImage("https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fvectors%2Fblank-profile-picture-mystery-man-973460%2F&psig=AOvVaw3IUmjCZOsTaM5tOYj15Kol&ust=1741793671124000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKjypJutgowDFQAAAAAdAAAAABAE") :
+                        NetworkImage(baseUrl + staffImage.value!),
+                    backgroundColor: Colors.blue.shade100,
+                    // child: Icon(
+                    //   Icons.person,
+                    //   size: 40,
+                    //   color: Colors.blue.shade900,
+                    // ),
                   ),
                 ),
               ),
+
               // Drawer Items with Links
               ListTile(
                 leading: const Icon(Icons.person, color: Colors.white),
@@ -76,15 +96,14 @@ class HomeScreen2 extends StatelessWidget {
                   'PROFILE',
                   style: TextStyle(color: Colors.white),
                 ),
-                onTap: ()async {
-         await    fetchUserProfile();
+                onTap: () async {
+                  await fetchStaffProfile();
                   Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Profile(),
-                                ),
-                              );
-                
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfileStaff(),
+                    ),
+                  );
                 },
               ),
               ListTile(
@@ -95,11 +114,11 @@ class HomeScreen2 extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LanguageSelectionScreen(),
-                                ),
-                              );
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LanguageSelectionScreen(),
+                    ),
+                  );
                 },
               ),
               ListTile(
@@ -140,7 +159,8 @@ class HomeScreen2 extends StatelessWidget {
                 ),
                 onTap: () {
                   snackbarwiidget(context, 'loging out..');
-                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctxt)=>Login()));
+                  Navigator.pushReplacement(
+                      context, MaterialPageRoute(builder: (ctxt) => Login()));
                   // Log out functionality
                 },
               ),
@@ -148,7 +168,6 @@ class HomeScreen2 extends StatelessWidget {
           ),
         ),
       ),
-      
       body: Column(
         children: [
           Container(
@@ -156,10 +175,17 @@ class HomeScreen2 extends StatelessWidget {
             padding: EdgeInsets.all(16.0),
             child: Row(
               children: [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.blue[200],
-                  child: Icon(Icons.person, size: 40, color: Colors.white),
+                ValueListenableBuilder(
+                  valueListenable: staffImage,
+                  builder: (context, value, child) => 
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundImage: staffImage.value == null? NetworkImage("https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fvectors%2Fblank-profile-picture-mystery-man-973460%2F&psig=AOvVaw3IUmjCZOsTaM5tOYj15Kol&ust=1741793671124000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKjypJutgowDFQAAAAAdAAAAABAE") :
+                        NetworkImage(baseUrl + staffImage.value!),
+                  
+                    backgroundColor: Colors.blue[200],
+                    // child: Icon(Icons.person, size: 40, color: Colors.white),
+                  ),
                 ),
                 SizedBox(width: 16),
                 Column(
@@ -173,8 +199,8 @@ class HomeScreen2 extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      'PRANAV',
+                    Text('',
+                      // staffPROFILEDATA?["First_name"],
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -208,7 +234,7 @@ class HomeScreen2 extends StatelessWidget {
                 //   icon: Icons.update,
                 //   title: 'Update report',
                 //   onTap: () {
-                   
+
                 //   },
                 // ),
                 _buildMenuCard(
@@ -216,49 +242,50 @@ class HomeScreen2 extends StatelessWidget {
                   title: 'Chat With user & authority',
                   onTap: () {
                     Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ChatScreen2(),
-                                ),
-                              );
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChatScreen2(),
+                      ),
+                    );
                   },
                 ),
                 _buildMenuCard(
                   icon: Icons.person,
                   title: 'User details',
                   onTap: () {
-                      Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => UserDetailsScreen(),
-                                ),
-                              );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UserDetailsScreen(),
+                      ),
+                    );
                   },
                 ),
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton.icon(
-              onPressed: () {
-                Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => UpdateReadingScreen(),
-                                ),
-                              );
-              },
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.black,
-                side: BorderSide(color: Colors.black, width: 1.5),
-              ),
-              icon: Icon(Icons.speed),
-              label: Text('Update meter reading'),
-            ),
-          )
+          //   Padding(
+          //     padding: const EdgeInsets.all(16.0),
+          //     child: ElevatedButton.icon(
+          //       onPressed: () {
+          //         Navigator.push(
+          //                         context,
+          //                         MaterialPageRoute(
+          //                           builder: (context) => UpdateReadingScreen(),
+          //                         ),
+          //                       );
+          //       },
+          //       style: ElevatedButton.styleFrom(
+          //         padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          //         backgroundColor: Colors.white,
+          //         foregroundColor: Colors.black,
+          //         side: BorderSide(color: Colors.black, width: 1.5),
+          //       ),
+          //       icon: Icon(Icons.speed),
+          //       label: Text('Update meter reading'),
+          //     ),
+          //   )
+          // ],
         ],
       ),
     );

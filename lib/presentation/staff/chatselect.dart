@@ -57,15 +57,15 @@ class ChatScreen2 extends StatelessWidget {
                               );},
                 ),
                 SizedBox(height: 20),
-                ChatButton(
-                  label: 'Chat With authority',
-                  onPressed: () {Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ChatScreen(),
-                                ),
-                              );},
-                ),
+                // ChatButton(
+                //   label: 'Chat With authority',
+                //   onPressed: () {Navigator.push(
+                //                 context,
+                //                 MaterialPageRoute(
+                //                   builder: (context) => ChatScreen(),
+                //                 ),
+                //               );},
+                // ),
               ],
             ),
           ),

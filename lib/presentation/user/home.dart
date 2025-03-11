@@ -57,9 +57,8 @@ class HomeScreen1 extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                accountEmail:  Text(
-                                '${PROFILEDATA?['First_name'] ?? ''} ${PROFILEDATA?['Mid_name'] ?? ''} ${PROFILEDATA?['Last_name'] ?? ''}',
-
+                accountEmail: Text(
+                  '${PROFILEDATA?['First_name'] ?? ''} ${PROFILEDATA?['Mid_name'] ?? ''} ${PROFILEDATA?['Last_name'] ?? ''}',
                   style: TextStyle(color: Colors.white),
                 ),
                 currentAccountPicture: CircleAvatar(
@@ -78,15 +77,14 @@ class HomeScreen1 extends StatelessWidget {
                   'PROFILE',
                   style: TextStyle(color: Colors.white),
                 ),
-                onTap: ()async {
-         await    fetchUserProfile();
+                onTap: () async {
+                  await fetchUserProfile();
                   Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Profile(),
-                                ),
-                              );
-                
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Profile(),
+                    ),
+                  );
                 },
               ),
               ListTile(
@@ -97,11 +95,11 @@ class HomeScreen1 extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LanguageSelectionScreen(),
-                                ),
-                              );
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LanguageSelectionScreen(),
+                    ),
+                  );
                 },
               ),
               ListTile(
@@ -142,7 +140,8 @@ class HomeScreen1 extends StatelessWidget {
                 ),
                 onTap: () {
                   snackbarwiidget(context, 'loging out..');
-                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctxt)=>Login()));
+                  Navigator.pushReplacement(
+                      context, MaterialPageRoute(builder: (ctxt) => Login()));
                   // Log out functionality
                 },
               ),
@@ -177,7 +176,7 @@ class HomeScreen1 extends StatelessWidget {
                   const SizedBox(width: 16),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:[
+                    children: [
                       const Text(
                         'WELCOME',
                         style: TextStyle(
@@ -187,7 +186,7 @@ class HomeScreen1 extends StatelessWidget {
                         ),
                       ),
                       Text(
-                '${PROFILEDATA?['First_name'] ?? ''} ${PROFILEDATA?['Mid_name'] ?? ''} ${PROFILEDATA?['Last_name'] ?? ''}',
+                        '${PROFILEDATA?['First_name'] ?? ''} ${PROFILEDATA?['Mid_name'] ?? ''} ${PROFILEDATA?['Last_name'] ?? ''}',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -244,11 +243,12 @@ class HomeScreen1 extends StatelessWidget {
                 FeatureCard(
                   icon: Icons.receipt,
                   title: 'Bill & Payment',
-                  onTap: ()async {
-                   List< Map<String,dynamic>>billdata=await viewBillapi();
+                  onTap: () async {
+                    List<Map<String, dynamic>> billdata = await viewBillapi();
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => BillPaymentScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => BillPaymentScreen()),
                     );
                   },
                 ),

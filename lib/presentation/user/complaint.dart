@@ -140,7 +140,7 @@ class _ComplaintPageState extends State<ComplaintPage> {
             ),
 
             SizedBox(height: 30,),
-            Expanded(child: ListView.builder(itemCount: 3,
+            Expanded(child: ListView.builder(itemCount: widget.complaints != null ? widget.complaints.length : 0,
               itemBuilder: (context, index) {
                 final cmplint=widget.complaints[index];
               return ListTile(

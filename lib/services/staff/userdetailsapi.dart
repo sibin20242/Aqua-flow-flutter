@@ -1,3 +1,4 @@
+import 'package:aquaflow/services/loginapi.dart';
 import 'package:dio/dio.dart';
 
 Dio _dio = Dio();
@@ -16,7 +17,7 @@ Future<bool> submitUserDetails({
       "Phone_No": phoneNo,
     };
 
-    final response = await _dio.post('$baseUrl/userdetails', data: data);
+    final response = await _dio.post('$baseUrl/Userdetailsapi/$loginId', data: data);
 
     if (response.statusCode == 201) { // Adjust status code based on your API
       print('User details submitted successfully!');

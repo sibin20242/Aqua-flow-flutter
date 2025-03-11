@@ -21,7 +21,8 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
 
   Future<void> fetchUserDetails() async {
     try {
-      var response = await Dio().get('$baseUrl/Userdetailsapi');
+      final data = {};
+      var response = await Dio().get('$baseUrl/Userlist', data: data);
       print(response.data);
       if (response.statusCode == 200) {
         setState(() {
@@ -76,7 +77,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
               ],
             ),
           ),
-          
+
           // Search Bar
           Container(
             color: Colors.blue[900],
@@ -112,9 +113,12 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
             child: isLoading
                 ? Center(child: CircularProgressIndicator())
                 : errorMessage.isNotEmpty
-                    ? Center(child: Text(errorMessage, style: TextStyle(color: Colors.red)))
+                    ? Center(
+                        child: Text(errorMessage,
+                            style: TextStyle(color: Colors.red)))
                     : ListView.builder(
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         itemCount: users.length,
                         itemBuilder: (context, index) {
                           return Card(
@@ -134,8 +138,10 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                               subtitle: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Consumer_No: ${users[index]['Consumer_no'] ?? 'N/A'}"),
-                                  Text("Phone: ${users[index]['Phone_no'] ?? 'N/A'}"),
+                                  Text(
+                                      "Consumer_No: ${users[index]['Consumer_no'] ?? 'N/A'}"),
+                                  Text(
+                                      "Phone: ${users[index]['Phone_no'] ?? 'N/A'}"),
                                 ],
                               ),
                               trailing: ElevatedButton.icon(
@@ -144,12 +150,14 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => UpdateReadingScreen(
-                                        data: users[index], // Pass the user data correctly
+                                        data: users[
+                                            index], // Pass the user data correctly
                                       ),
                                     ),
                                   );
                                 },
-                                icon: Icon(Icons.speed, color: Color.fromARGB(255, 0, 0, 0)),
+                                icon: Icon(Icons.speed,
+                                    color: Color.fromARGB(255, 0, 0, 0)),
                                 label: Text(''),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
@@ -169,11 +177,4 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: UserDetailsScreen(),
-  ));
 }
